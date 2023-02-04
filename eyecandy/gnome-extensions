@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+sudo dnf install gnome-shell-extension-appindicator gnome-shell-extension-gsconnect openssl gnome-shell-extension-dash-to-dock gnome-shell-extension-just-perfection

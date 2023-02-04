@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+sudo dnf copr enable dusansimic/themes 
+sudo dnf install morewaita-icon-theme

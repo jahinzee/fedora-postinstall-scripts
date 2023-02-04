@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+# PREREQS: enable flathub
+# flatpak
+flatpak install org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
+# rpm
+sudo dnf copr enable nickavem/adw-gtk3
+sudo dnf install adw-gtk3
+# libadwaita src -> gtk4
+sudo dnf install git vala gobject-introspection-devel sassc meson gtk4-devel cmake ninja-build
+git clone https://gitlab.gnome.org/GNOME/libadwaita.git
+cd libadwaita
+git checkout 983f1312
+meson . _build
+ninja -C _build
+mkdir -p "~/.local/share/themes/adw-gtk3/gtk-4.0"
+mkdir -p "~/.local/share/themes/adw-gtk3-dark/gtk-4.0"
+cp "_build/src/stylesheet/*.css" "~/.local/share/themes/adw-gtk3/gtk-4.0/"
+cp "_build/src/stylesheet/*.css" "~/.local/share/themes/adw-gtk3-dark/gtk-4.0/"
+mv "~/.local/share/themes/adw-gtk3/gtk-4.0/base.css" "~/.local/share/themes/adw-gtk3/gtk-4.0/gtk.css"
+mv "~/.local/share/themes/adw-gtk3-dark/gtk-4.0/base.css" "~/.local/share/themes/adw-gtk3-dark/gtk-4.0/gtk.css"
+sed -i "1i@import 'defaults-light.css';" ~/.local/share/themes/adw-gtk3/gtk-4.0/gtk.css
+sed -i "1i@import 'defaults-dark.css';" ~/.local/share/themes/adw-gtk3-dark/gtk-4.0/gtk.css
+flatpak override --filesystem=~/.local/share/themes

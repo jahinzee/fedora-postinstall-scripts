@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+git clone https://github.com/rafaelmardojai/firefox-gnome-theme && cd firefox-gnome-theme
+./scripts/auto-install.sh
