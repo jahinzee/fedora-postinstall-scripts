@@ -12,12 +12,12 @@ cd libadwaita
 git checkout 983f1312
 meson . _build
 ninja -C _build
-mkdir -p "~/.local/share/themes/adw-gtk3/gtk-4.0"
-mkdir -p "~/.local/share/themes/adw-gtk3-dark/gtk-4.0"
-cp "_build/src/stylesheet/*.css" "~/.local/share/themes/adw-gtk3/gtk-4.0/"
-cp "_build/src/stylesheet/*.css" "~/.local/share/themes/adw-gtk3-dark/gtk-4.0/"
-mv "~/.local/share/themes/adw-gtk3/gtk-4.0/base.css" "~/.local/share/themes/adw-gtk3/gtk-4.0/gtk.css"
-mv "~/.local/share/themes/adw-gtk3-dark/gtk-4.0/base.css" "~/.local/share/themes/adw-gtk3-dark/gtk-4.0/gtk.css"
-sed -i "1i@import 'defaults-light.css';" ~/.local/share/themes/adw-gtk3/gtk-4.0/gtk.css
-sed -i "1i@import 'defaults-dark.css';" ~/.local/share/themes/adw-gtk3-dark/gtk-4.0/gtk.css
-flatpak override --filesystem=~/.local/share/themes
+sudo mkdir -p ~/.local/share/themes/adw-gtk3/gtk-4.0
+sudo mkdir -p ~/.local/share/themes/adw-gtk3-dark/gtk-4.0
+sudo cp ./_build/src/stylesheet/*.css ~/.local/share/themes/adw-gtk3/gtk-4.0/
+sudo cp ./_build/src/stylesheet/*.css ~/.local/share/themes/adw-gtk3-dark/gtk-4.0/
+sudo mv ~/.local/share/themes/adw-gtk3/gtk-4.0/base.css ~/.local/share/themes/adw-gtk3/gtk-4.0/gtk.css
+sudo mv ~/.local/share/themes/adw-gtk3-dark/gtk-4.0/base.css ~/.local/share/themes/adw-gtk3-dark/gtk-4.0/gtk.css
+sudo sed -i "1i@import 'defaults-light.css';" ~/.local/share/themes/adw-gtk3/gtk-4.0/gtk.css
+sudo sed -i "1i@import 'defaults-dark.css';" ~/.local/share/themes/adw-gtk3-dark/gtk-4.0/gtk.css
+sudo flatpak override --filesystem=~/.local/share/themes
