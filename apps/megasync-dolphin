@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+sudo dnf install https://mega.nz/linux/repo/Fedora_37/x86_64/megasync-4.8.1-1.1.x86_64.rpm https://mega.nz/linux/repo/Fedora_37/x86_64/dolphin-megasync-4.0.2-1.1.x86_64.rpm
